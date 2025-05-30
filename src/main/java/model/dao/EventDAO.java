@@ -85,19 +85,19 @@ public class EventDAO {
 	}
 	
 	
-	//delete文 id検索して削除
-	public void deleteEvent(EventDTO event) throws SQLException, ClassNotFoundException {
-		try(ConnectionDance_event_db db = new ConnectionDance_event_db()) {
-		    Connection con = db.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("delete from events where id = ?");
-			
-			pstmt.setInt(1, event.getId());
-			pstmt.executeUpdate();
-			System.out.println("deleteしました");
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}	
+//	//delete文 id検索して削除
+//	public void deleteEvent(EventDTO event) throws SQLException, ClassNotFoundException {
+//		try(ConnectionDance_event_db db = new ConnectionDance_event_db()) {
+//		    Connection con = db.getConnection();
+//			PreparedStatement pstmt = con.prepareStatement("delete from events where id = ?");
+//			
+//			pstmt.setInt(1, event.getId());
+//			pstmt.executeUpdate();
+//			System.out.println("deleteしました");
+//		}catch(SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}	
 	
 	/*//update 基本dancernameのみを想定
 	public void updateEvent(UsersDTO user ,String dancername) {

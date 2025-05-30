@@ -31,6 +31,7 @@ if (!eventdtolist.isEmpty()) {
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+<h1>DanceEvent</h1>
 
 <!-- ヘッダー -->
 <header class="header">

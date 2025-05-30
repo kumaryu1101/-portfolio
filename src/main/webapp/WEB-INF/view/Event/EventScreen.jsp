@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User Top</title>
+<title>EventScreen</title>
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -26,7 +26,7 @@
 <!-- メイン -->
 <div class="content-container">
   <h2>イベント参加者トップ画面</h2>
-  <a href="NotPage.jsp" class="btn-link">参加中のイベント(未実装)</a>
+  <a href="EntryEventServlet" class="btn-link">参加中のイベント(未実装)</a>
   <a href="EntryListServlet" class="btn-link">イベント一覧へ（エントリーに進む）</a>
 </div>
 

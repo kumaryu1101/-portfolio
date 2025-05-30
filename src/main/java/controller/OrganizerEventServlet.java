@@ -29,7 +29,7 @@ public class OrganizerEventServlet extends HttpServlet {
         super();
        
     }
-    //イベント一覧
+    //オーガナイザーのイベント一覧
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

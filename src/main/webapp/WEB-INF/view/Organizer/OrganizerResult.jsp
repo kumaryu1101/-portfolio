@@ -35,6 +35,19 @@ if (!eventdtolist.isEmpty()) {
 </head>
 <body>
 <h1>DanceEvent</h1>
+
+<!-- ヘッダー -->
+<header class="header">
+  <div class="logo">EventEntry</div>
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li><a href="UserServlet">Home</a></li>
+      <li><a href="EventServlet">EventEntry</a></li>
+      <li><a href="OrganizerServlet">Organizer</a></li>
+      <li><a href="JudgeServlet">Judge</a></li>
+    </ul>
+  </nav>
+</header>
 <% if (event == null) { %>
     <h2><%= err %></h2>
 <% } else { %>

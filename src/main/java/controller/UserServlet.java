@@ -19,7 +19,7 @@ public class UserServlet extends HttpServlet {
         super();
     }
 
-	
+	//Home画面遷移するサーブレット
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/UserScreen.jsp");

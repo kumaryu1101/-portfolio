@@ -17,20 +17,21 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy年 MM月 dd日");
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+<h1>DanceEvent</h1>
 
-	<!-- ヘッダー -->
-	<header class="header">
-		<div class="logo">EventEntry</div>
-		<nav class="navbar">
-			<ul class="nav-menu">
-				<li><a href="UserServlet">Home</a></li>
-				<li><a href="EventServlet">EventEntry</a></li>
-				<li><a href="OrganizerServlet">Organizer</a></li>
-				<li><a href="JudgeServlet">Judge</a></li>
-			</ul>
-		</nav>
-	</header>
-	<h2>イベント一覧がのるよ</h2>
+<!-- ヘッダー -->
+<header class="header">
+  <div class="logo">EventEntry</div>
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li><a href="UserServlet">Home</a></li>
+      <li><a href="EventServlet">EventEntry</a></li>
+      <li><a href="OrganizerServlet">Organizer</a></li>
+      <li><a href="JudgeServlet">Judge</a></li>
+    </ul>
+  </nav>
+</header>
+	<h2>イベント一覧</h2>
 
 	<table class="design01">
 		<tr>

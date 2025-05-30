@@ -35,7 +35,7 @@ public class InsertEventServlet extends HttpServlet {
 
 	}
 
-	//イベントエントリー>>イベント一覧>>イベントにエントリー（参加）
+	//イベントにエントリー（参加）する
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -86,7 +86,7 @@ public class InsertEventServlet extends HttpServlet {
 
 			// 登録後、最新のエントリーリストを取得して表示
 			request.setAttribute("list", entrylistdao.selectEntryList(eventdto));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/entrylist.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/Event/entrylist.jsp");
 			dispatcher.forward(request, response);
 
 		} catch (NumberFormatException | ClassNotFoundException | SQLException e) {

@@ -10,22 +10,27 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class OrganizerServlet
+ * Servlet implementation class EntryEventServlet
  */
-@WebServlet("/OrganizerServlet")
-public class OrganizerServlet extends HttpServlet {
+@WebServlet("/EntryEventServlet")
+public class EntryEventServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
-    public OrganizerServlet() {
+  
+    public EntryEventServlet() {
         super();
     }
 
-	//オーガナイザーのトップ画面に遷移
+	//参加中のイベント表示する（未実装）
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/Organizer/OrganizerScreen.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/NotPage.jsp");
 		dispatcher.forward(request, response);
+		
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 

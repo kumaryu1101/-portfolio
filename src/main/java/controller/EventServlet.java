@@ -20,7 +20,7 @@ public class EventServlet extends HttpServlet {
     public EventServlet() {
         super();
     }
-
+    //イベントのトップ画面に遷移する
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/Event/EventScreen.jsp");

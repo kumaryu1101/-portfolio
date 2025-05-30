@@ -29,7 +29,7 @@ public class EntryListServlet extends HttpServlet {
         
     }
 
-	//イベントエントリー>>イベント一覧の時に表示される
+	//イベント一覧の時に表示する
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -51,7 +51,6 @@ public class EntryListServlet extends HttpServlet {
 	}
 
 	
-	//イベントエントリー>>イベント一覧>> エントリーリストを見る
 	// エントリーリスト表示
 		protected void doPost(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {

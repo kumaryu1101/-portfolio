@@ -103,6 +103,25 @@ public class UsersDAO {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-	}	
+	}
+	//test用
+	// UsersDAO.java に追加
+	public UsersDTO findByUsername(String username) throws ClassNotFoundException {
+	    UsersDTO user = new UsersDTO();
+	    try(ConnectionDance_event_db db = new ConnectionDance_event_db()) {
+	        Connection con = db.getConnection();
+	        PreparedStatement pstmt = con.prepareStatement("select * from users where username = ?");
+	        pstmt.setString(1, username);
+	        ResultSet rs = pstmt.executeQuery();
+	        if(rs.next()) {
+	            user.setId(rs.getInt("id"));
+	            user.setUserName(rs.getString("username"));
+	            user.setDancerName(rs.getString("dancername"));
+	        }
+	    } catch(SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return user;
+	}
 
 }

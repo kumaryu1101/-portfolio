@@ -69,7 +69,7 @@ public class AddPointServlet extends HttpServlet {
   		}
   		request.setAttribute("eventlist", eventlist);
 
-  		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/JudgeScreen.jsp");//jspに画面遷移
+  		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/Judge/JudgeScreen.jsp");//jspに画面遷移
   		dispatcher.forward(request, response);
 	}
 

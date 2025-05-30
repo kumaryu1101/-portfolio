@@ -18,7 +18,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy年 MM月 dd日");
 <body>
 
 	<h1>DanceEvent</h1>
-	<h2>イベント一覧がのるよ</h2>
+	<h2>イベント一覧</h2>
 
 	<table class="design01">
 		<tr>

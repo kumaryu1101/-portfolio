@@ -17,9 +17,7 @@ import model.dao.EventDAO;
 import model.dto.EntryListDTO;
 import model.dto.EventDTO;
 
-/**
- * Servlet implementation class JudgeServlet
- */
+
 @WebServlet("/JudgeServlet")
 public class JudgeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +27,7 @@ public class JudgeServlet extends HttpServlet {
         super();
     }
 
-  //イベント一覧
+  //judgeのイベント一覧
   	protected void doGet(HttpServletRequest request, HttpServletResponse response)
   			throws ServletException, IOException {
 

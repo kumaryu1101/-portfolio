@@ -54,57 +54,6 @@ public class EntryListDAO {
 //        return entryList;
 //    }
     
-    //引数をもらいその数だけポイント上位者を表示する
-    public List<EntryListDTO> selectTopEntryList(int eventId, int limit) throws SQLException, ClassNotFoundException {
-        List<EntryListDTO> result = new ArrayList<>();
-
-        String sql = """
-            SELECT 
-                e.id AS event_id,
-                e.name AS event_name,
-                u.id AS user_id,
-                u.dancer_name,
-                el.points
-            FROM 
-                entrylist el
-            INNER JOIN 
-                events e ON el.event_id = e.id
-            INNER JOIN 
-                users u ON el.user_id = u.id
-            WHERE 
-                e.id = ?
-            ORDER BY 
-                el.points DESC
-            LIMIT ?
-        """;
-
-        try(ConnectionDance_event_db db = new ConnectionDance_event_db()) {
-		    Connection con = db.getConnection();
-		    PreparedStatement pstmt = con.prepareStatement(sql);
-		    
-            pstmt.setInt(1, eventId);
-            pstmt.setInt(2, limit);
-
-            try (ResultSet rs = pstmt.executeQuery()) {
-                while (rs.next()) {
-                    EventDTO event = new EventDTO();
-                    event.setId(rs.getInt("event_id"));
-                    event.setName(rs.getString("event_name"));
-
-                    UsersDTO user = new UsersDTO();
-                    user.setId(rs.getInt("user_id"));
-                    user.setDancerName(rs.getString("dancer_name"));
-
-                    EntryListDTO entry = new EntryListDTO(event, user);
-                    entry.setPoints(rs.getInt("points"));
-
-                    result.add(entry);
-                }
-            }
-        }
-
-        return result;
-    }
 
 
     // エントリーを追加
@@ -124,7 +73,6 @@ public class EntryListDAO {
     }
 
     // ポイントを更新
-    //ポイントの追加がちょっとわかんない
     public void updatePoints(EntryListDTO entry) throws SQLException, ClassNotFoundException {
         String sql = "update entrylist set points = points + ? where event_id = ? and dancer_id = ?";
         try(ConnectionDance_event_db db = new ConnectionDance_event_db()) {
@@ -140,19 +88,19 @@ public class EntryListDAO {
         }
     }
 
-    // エントリーを削除
-    public void deleteEntry(EntryListDTO entry) throws SQLException, ClassNotFoundException {
-        String sql = "delete from entrylist where event_id = ? and dancer_id = ?";
-        try (Connection con = connection.getConnection();
-             PreparedStatement pstmt = con.prepareStatement(sql)) {
-
-            pstmt.setInt(1, entry.getEvent().getId());
-            pstmt.setInt(2, entry.getUser().getId());
-
-            pstmt.executeUpdate();
-            System.out.println("エントリーを削除しました。");
-        }
-    }
+	/*   // エントリーを削除
+	public void deleteEntry(EntryListDTO entry) throws SQLException, ClassNotFoundException {
+	    String sql = "delete from entrylist where event_id = ? and dancer_id = ?";
+	    try (Connection con = connection.getConnection();
+	         PreparedStatement pstmt = con.prepareStatement(sql)) {
+	
+	        pstmt.setInt(1, entry.getEvent().getId());
+	        pstmt.setInt(2, entry.getUser().getId());
+	
+	        pstmt.executeUpdate();
+	        System.out.println("エントリーを削除しました。");
+	    }
+	}*/
     
     // 指定したイベントのすべてのダンサー名を取得（）
     public List<EntryListDTO> selectEntryList(EventDTO eventdto) throws SQLException, ClassNotFoundException {

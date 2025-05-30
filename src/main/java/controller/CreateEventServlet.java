@@ -27,18 +27,17 @@ public class CreateEventServlet extends HttpServlet {
      */
     public CreateEventServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 
-
+    //organizerのトップ画面
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/Organizer/CreateEvent.jsp");
 		dispatcher.forward(request, response);
 	}
     
-    
+    //イベントを作成する
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
