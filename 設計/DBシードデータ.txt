@@ -1,0 +1,9 @@
+INSERT INTO users (username, dancername) VALUES
+  ('danceking', 'TARO'),
+  ('groovemaster', 'HANAKO'),
+  ('b-boy123', 'YUTA');
+
+
+INSERT INTO events (name, event_date, organizer_name, comment) VALUES
+  ('Summer Battle', '2025-07-15 18:00:00', 'DJ KEN', 'サマーイベントのダンスバトル'),
+  ('Winter Jam', '2025-12-10 19:30:00', 'MC RYO', '冬のダンスフェス');

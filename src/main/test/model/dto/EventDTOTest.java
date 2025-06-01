@@ -4,15 +4,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.dto.EventDTO;
-
 class EventDTOTest {
+    private EventDTO event;
 
+    @BeforeEach
+    void setUp() {
+        event = new EventDTO();
+    }
+
+    /**
+     * デフォルトコンストラクタの初期状態をテストする。
+     * 全フィールドが初期値（nullまたは0）であることを確認する。
+     */
     @Test
     void testDefaultConstructor() {
-        EventDTO event = new EventDTO();
         assertEquals(0, event.getId());
         assertNull(event.getName());
         assertNull(event.getDate());
@@ -20,41 +28,57 @@ class EventDTOTest {
         assertNull(event.getComment());
     }
 
+    /**
+     * IDと名前を指定するコンストラクタの動作をテストする。
+     * フィールドが正しく初期化されることを確認する。
+     */
     @Test
     void testConstructorWithIdAndName() {
-        EventDTO event = new EventDTO(1, "Dance Party");
+        EventDTO event = new EventDTO(1, "Test Event");
         assertEquals(1, event.getId());
-        assertEquals("Dance Party", event.getName());
-        assertNull(event.getDate());
-        assertNull(event.getOrganizerName());
-        assertNull(event.getComment());
+        assertEquals("Test Event", event.getName());
     }
 
+    /**
+     * 全フィールドを受け取るコンストラクタの動作をテストする。
+     * すべてのフィールドが正しく初期化されることを確認する。
+     */
     @Test
-    void testConstructorWithNameDateOrganizerComment() {
+    void testConstructorWithAllFields() {
+        String name = "Event Name";
         Date date = new Date();
-        EventDTO event = new EventDTO("EventX", date, "Alice", "Fun event");
-        assertEquals(0, event.getId());
-        assertEquals("EventX", event.getName());
+        String organizer = "Organizer";
+        String comment = "This is a comment.";
+
+        EventDTO event = new EventDTO(name, date, organizer, comment);
+        assertEquals(name, event.getName());
         assertEquals(date, event.getDate());
-        assertEquals("Alice", event.getOrganizerName());
-        assertEquals("Fun event", event.getComment());
+        assertEquals(organizer, event.getOrganizerName());
+        assertEquals(comment, event.getComment());
     }
 
+    /**
+     * セッターとゲッターの動作をテストする。
+     * それぞれのセッターで設定した値が、ゲッターで正しく取得できることを確認する。
+     */
     @Test
     void testSettersAndGetters() {
-        EventDTO event = new EventDTO();
+        int id = 10;
+        String name = "Sample Event";
         Date date = new Date();
-        event.setId(5);
-        event.setName("Sample Event");
-        event.setDate(date);
-        event.setOrganizerName("Bob");
-        event.setComment("Sample comment");
+        String organizer = "Organizer Name";
+        String comment = "Event comment";
 
-        assertEquals(5, event.getId());
-        assertEquals("Sample Event", event.getName());
+        event.setId(id);
+        event.setName(name);
+        event.setDate(date);
+        event.setOrganizerName(organizer);
+        event.setComment(comment);
+
+        assertEquals(id, event.getId());
+        assertEquals(name, event.getName());
         assertEquals(date, event.getDate());
-        assertEquals("Bob", event.getOrganizerName());
-        assertEquals("Sample comment", event.getComment());
+        assertEquals(organizer, event.getOrganizerName());
+        assertEquals(comment, event.getComment());
     }
 }

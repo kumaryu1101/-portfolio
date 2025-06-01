@@ -112,4 +112,28 @@ public class EventDAO {
 			e.printStackTrace();
 		}
 	}*/
+	
+	//テスト用
+	// 名前でイベントを検索するメソッド
+	public EventDTO findByName(String name) throws SQLException, ClassNotFoundException {
+	    EventDTO event = new EventDTO();
+	    try(ConnectionDance_event_db db = new ConnectionDance_event_db()) {
+	        Connection con = db.getConnection();
+	        // 部分一致を考慮してLIKE検索（必要なら）
+	        PreparedStatement pstmt = con.prepareStatement("SELECT * FROM events WHERE name LIKE ?");
+	        pstmt.setString(1, "%" + name + "%");
+	        
+	        ResultSet rs = pstmt.executeQuery();
+	        while(rs.next()) {
+	            event.setId(rs.getInt("id"));
+	            event.setName(rs.getString("name"));
+	            event.setDate(rs.getTimestamp("event_date"));
+	            event.setOrganizerName(rs.getString("organizer_name"));
+	            event.setComment(rs.getString("comment"));
+	        }
+	    } catch(SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return event;
+	}
 }

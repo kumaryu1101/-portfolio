@@ -10,18 +10,22 @@ public class EventDAOTest {
     public static void main(String[] args) throws Exception {
         EventDAOTest test = new EventDAOTest();
 
-        System.out.println("① findById メソッドのテスト開始");
+        //① findById メソッドのテスト開始
         test.testFindById();
         System.out.println("① テスト終了\n");
 
-        System.out.println("② selectEvent メソッドのテスト開始");
+        //② selectEvent メソッドのテスト開始
         test.testSelectEvent();
         System.out.println("② テスト終了\n");
 
-        System.out.println("③ insertEvent メソッドのテスト開始");
+        //③ insertEvent メソッドのテスト開始
         test.testInsertEvent();
         System.out.println("③ テスト終了\n");
     }
+    
+    
+    
+    
 
     // ① IDからイベントを検索するテスト
     public void testFindById() throws Exception {
@@ -58,8 +62,7 @@ public class EventDAOTest {
         dao.insertEvent(name, date, organizer, comment);
         System.out.println("insert処理完了");
         
-        // 挿入確認のため、名前で検索などを行うメソッドがあれば便利ですが、
-        // ここでは目視で確認する形としています。
+        
     }
 
 }

@@ -10,50 +10,37 @@ public class UsersDAOTest {
         // ① findByid() メソッドのテスト
         testFindById(dao);
 
-        // ② selectUser() メソッドのテスト
-        testSelectUser(dao);
 
-        // ③ intsertUser() メソッドのテスト
+
+        // ② intsertUser() メソッドのテスト
         testInsertUser();
 
-        // ④ updateUser() メソッドのテスト
-        testUpdateUser(dao);
 
-        // ⑤ deleteUser() メソッドのテスト
+
+        // ③ deleteUser() メソッドのテスト
         //他のテーブルから参照されているため、削除できず
         testDeleteUser(dao);
     }
+    
+    
 
     /**
      * ① findByid メソッドでユーザー取得のテスト
      */
     private static void testFindById(UsersDAO dao) throws ClassNotFoundException {
-        System.out.println("① findByid メソッドのテスト開始");
         UsersDTO user = dao.findByid(1);  // id=1は環境に合わせて存在するIDを指定
         if (user.getId() != 0) {
-            System.out.println("ユーザー取得成功: ID=" + user.getId() + ", username=" + user.getUserName() + ", dancername=" + user.getDancerName());
+            System.out.println("①findbyid成功");
         } else {
-            System.out.println("ユーザーが見つかりませんでした");
+            System.out.println("①失敗");
         }
-        System.out.println("① テスト終了\n");
     }
 
-    /**
-     * ② selectUser メソッドのテスト
-     */
-    private static void testSelectUser(UsersDAO dao) throws Exception {
-        System.out.println("② selectUser メソッドのテスト開始");
-        UsersDTO user = new UsersDTO();
-        user.setId(1); // 存在するIDをセット
-        dao.selectUser(user);
-        System.out.println("② テスト終了\n");
-    }
 
     /**
-     * ③ intsertUser メソッドのテスト
+     * ② intsertUser メソッドのテスト
      */
     public static void testInsertUser() throws Exception {
-        System.out.println("③ intsertUser メソッドのテスト開始");
         UsersDAO dao = new UsersDAO();
 
         // テスト用のユーザー名・ダンサー名
@@ -71,28 +58,11 @@ public class UsersDAOTest {
         } else {
             System.out.println("インサート失敗");
         }
-        System.out.println("③ テスト終了");
     }
 
 
     /**
-     * ④ updateUser メソッドのテスト
-     */
-    private static void testUpdateUser(UsersDAO dao) throws Exception {
-        System.out.println("④ updateUser メソッドのテスト開始");
-        UsersDTO user = dao.findByid(1);  // 存在するID
-        if (user.getId() != 0) {
-            String newDancerName = "UpdatedDancer_" + System.currentTimeMillis();
-            dao.updateUser(user, newDancerName);
-            System.out.println("更新完了: 新しいdancername=" + newDancerName);
-        } else {
-            System.out.println("更新対象のユーザーが存在しません");
-        }
-        System.out.println("④ テスト終了\n");
-    }
-
-    /**
-     * ⑤ deleteUser メソッドのテスト
+     * ③ deleteUser メソッドのテスト
      * ※ 事前に追加したテスト用ユーザーを削除する想定
      */
     private static void testDeleteUser(UsersDAO dao) throws Exception {
@@ -102,6 +72,5 @@ public class UsersDAOTest {
         UsersDTO user = new UsersDTO();
         user.setId(1);  // 存在するIDをセットしてください
         dao.deleteUser(user);
-        System.out.println("⑤ テスト終了\n");
     }
 }

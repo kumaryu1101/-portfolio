@@ -33,23 +33,23 @@ public class UsersDAO {
 	}
 	
 	
-	//select文 idで検索 または、usernameで検索？(かぶらないようにSQLで制約をつけているから)
-	public void selectUser(UsersDTO user) throws SQLException, ClassNotFoundException {
-		try(ConnectionDance_event_db db = new ConnectionDance_event_db()) {
-		    Connection con = db.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("select * from users where id = ?");
-			
-			pstmt.setInt(1,user.getId());
-			ResultSet rs = pstmt.executeQuery();//select文実行
-			if(rs.next()) {
-				System.out.println("ID:"+ rs.getInt("id") +"/ ユーザー名:"+rs.getString("username")+"/ ダンサー名:"+ rs.getString("dancername"));
-			}else {
-				System.out.println("IDが間違っているか、登録されていません");
+	/*	//select文 idで検索 または、usernameで検索？(かぶらないようにSQLで制約をつけているから)
+		public void selectUser(UsersDTO user) throws SQLException, ClassNotFoundException {
+			try(ConnectionDance_event_db db = new ConnectionDance_event_db()) {
+			    Connection con = db.getConnection();
+				PreparedStatement pstmt = con.prepareStatement("select * from users where id = ?");
+				
+				pstmt.setInt(1,user.getId());
+				ResultSet rs = pstmt.executeQuery();//select文実行
+				if(rs.next()) {
+					System.out.println("ID:"+ rs.getInt("id") +"/ ユーザー名:"+rs.getString("username")+"/ ダンサー名:"+ rs.getString("dancername"));
+				}else {
+					System.out.println("IDが間違っているか、登録されていません");
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
 			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
+		}*/
 	
 	//insert文 idは自動追加のため、user名とdancer名を受け取り登録
 	public  void intsertUser(String username, String dancername) throws SQLException, ClassNotFoundException {
@@ -91,19 +91,19 @@ public class UsersDAO {
 	}
 	
 	//update 基本dancernameのみを想定
-	public void updateUser(UsersDTO user ,String dancername) throws ClassNotFoundException {
-		try(ConnectionDance_event_db db = new ConnectionDance_event_db()) {
-		    Connection con = db.getConnection();
-			PreparedStatement pstmt = con.prepareStatement("update users set dancername = ? where id = ?");
-			
-			pstmt.setString(1, dancername);
-			pstmt.setInt(2, user.getId());
-			pstmt.executeUpdate();
-			System.out.println("updateしました");
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
+//	public void updateUser(UsersDTO user ,String dancername) throws ClassNotFoundException {
+//		try(ConnectionDance_event_db db = new ConnectionDance_event_db()) {
+//		    Connection con = db.getConnection();
+//			PreparedStatement pstmt = con.prepareStatement("update users set dancername = ? where id = ?");
+//			
+//			pstmt.setString(1, dancername);
+//			pstmt.setInt(2, user.getId());
+//			pstmt.executeUpdate();
+//			System.out.println("updateしました");
+//		}catch(SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	//test用
 	// UsersDAO.java に追加
 	public UsersDTO findByUsername(String username) throws ClassNotFoundException {
